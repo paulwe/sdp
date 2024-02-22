@@ -7,6 +7,8 @@ import (
 	"errors"
 	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 const (
@@ -321,6 +323,7 @@ func TestRoundTrip(t *testing.T) {
 					strconv.Quote(got), strconv.Quote(want),
 				)
 			}
+			require.Equal(t, len(actual), sd.Len(), "marshal length mismatch")
 		})
 	}
 }
